@@ -17,6 +17,7 @@
    - [returned functions of returned anonymous functions](#returned-functions-of-returned-anonymous-functions)
    - [methods declared in object literals](#methods-declared-in-object-literals)
    - [methods assigned to instantiated objects](#methods-assigned-to-instantiated-objects)
+   - [immediately invoked function expressions](#immediately-invoked-function-expressions)
 <a name=""></a>
 
 
@@ -45,7 +46,7 @@ npm test
 
 <a name="functions-assigned-to-variables"></a>
 # functions assigned to variables
-Are named "of var <varname> | line N".
+Are labelled "of var <varname> | line N".
 
 ```js
 var myFn = function () {}
@@ -58,7 +59,7 @@ var myFn = function asﾠvarﾠmyFnﾠㅣlineﾠ1 () {}
 
 <a name="function-parameters"></a>
 # function parameters
-Are named "passed into <called function> | line N".
+Are labelled "passed into <called function> | line N".
 
 ```js
 someFunc('blah', function () {})
@@ -72,7 +73,7 @@ someFunc('blah', function passedﾠintoﾠsomeFuncﾠㅣlineﾠ1 () {})
 
 <a name="method-parameters"></a>
 # method parameters
-Are named "passed into <parent object>ː<property name> | line N".
+Are labelled "passed into <parent object>ː<property name> | line N".
 
 ```js
 obj.prop(function () { })
@@ -85,7 +86,7 @@ obj.prop(function passedﾠintoﾠobjːpropﾠㅣlineﾠ1 () { })
 
 <a name="sub-object-method-parameters"></a>
 # sub-object method parameters
-are named "passed into <parent subobject>ː<property name> | line N".
+Are labelled "passed into <parent subobject>ː<property name> | line N".
 
 ```js
 obj.subobj.prop(function () { })
@@ -98,7 +99,7 @@ obj.subobj.prop(function passedﾠintoﾠsubobjːpropﾠㅣlineﾠ1 () { })
 
 <a name="returned-functions"></a>
 # returned functions
-Are named "returned from <parent function> | line N".
+Are labelled "returned from <parent function> | line N".
 
 ```js
 function f() {return function () { }}
@@ -111,7 +112,7 @@ function f() {return function returnedﾠfromﾠfﾠㅣlineﾠ1 () { }}
 
 <a name="returned-functions-of-returned-anonymous-functions"></a>
 # returned functions of returned anonymous functions
-Are named "returned from ᐸ <parent function (named)> ᐳ | line N".
+Are labelled "returned from ᐸ <parent function (named)> ᐳ | line N".
 
 ```js
 function contain () {
@@ -136,7 +137,7 @@ function contain() {
 
 <a name="methods-declared-in-object-literals"></a>
 # methods declared in object literals
-Are named "as property <property name> ㅣ line N".
+Are labelled "as property <property name> ㅣ line N".
 
 ```js
 function contain () {
@@ -157,7 +158,7 @@ function contain() {
 
 <a name="methods-assigned-to-instantiated-objects"></a>
 # methods assigned to instantiated objects
-Are named "as property <property name> ㅣ line N".
+Are labelled "as property <property name> ㅣ line N".
 
 ```js
 var o = {}; o.p = function (cb) { }
@@ -167,4 +168,22 @@ Transforms into:
 ```js
 var o = {}; o.p = function asﾠpropertyﾠpﾠㅣlineﾠ1 (cb) { }
 ```
+
+<a name="immediately-invoked-function-expressions"></a>
+# immediately invoked function expressions
+Are labelled "IIFEㅣ line N".
+
+```js
+!function() {}()
+;(function(){}())
+```
+
+Transforms into:
+```js
+!function IIFEﾠㅣlineﾠ1() {}()
+;(function IIFEﾠㅣlineﾠ2(){}())
+```
+
+
+
 

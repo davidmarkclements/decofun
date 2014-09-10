@@ -3,6 +3,7 @@ var fs = require('fs');
 var semantics = require('./semantics.json')
 var space = '\uffa0';
 
+
 Object.keys(semantics).forEach(function (k) {
    semantics[k] = semantics[k].replace(/ /g, space);
 })
@@ -16,70 +17,88 @@ var output;
 
 function rewrite (src) {
   output = falafel(src, {loc: true}, function (node) {
+    try {
+      if (node.type !== 'FunctionExpression' || node.id) {
+        return;
+      }
 
-    if (node.type !== 'FunctionExpression' || node.id) {
-      return;
-    }
+      var name = '';
+      var pType = node.parent.type;
+      if (pType === 'CallExpression') {
 
-    var name = '';
-    var pType = node.parent.type;
-    if (pType === 'CallExpression') {
+        if (node.parent.callee.name) {
+          name = semantics.argTo + node.parent.callee.name; 
+        } else {
 
-      if (node.parent.callee.name) {
-        name = semantics.argTo + node.parent.callee.name; 
-      } else {
-        if (node.parent.callee.object.type === 'Identifier') {
-          name = semantics.argTo + node.parent.callee.object.name + 'ː' + node.parent.callee.property.name;
-        } 
+          if (!node.parent.callee.object) {
+            name = 'IIFE';
 
-        if (node.parent.callee.object.type === 'MemberExpression') {
-          name = semantics.argTo + node.parent.callee.object.property.name + 'ː' + node.parent.callee.property.name;
+          } else {
+            if (node.parent.callee.object.type === 'Identifier') {
+              name = semantics.argTo + node.parent.callee.object.name + 'ː' + node.parent.callee.property.name;
+            } 
+
+            if (node.parent.callee.object.type === 'MemberExpression') {
+              name = semantics.argTo + node.parent.callee.object.property.name + 'ː' + node.parent.callee.property.name;
+            }
+
+          }
+
+
         }
+        
       }
-      
-    }
 
-    if (pType === 'ReturnStatement') {
-      if (!node.parent.parent.parent.id) { again = true; return; }
+      if (pType === 'ReturnStatement') {
+        if (!node.parent.parent.parent.id) { again = true; return; }
 
-      
+        
 
-      if (Object.keys(semantics).map(function (k) {
-        return node.parent.parent.parent.id.name.match(semantics[k]);
-      }).filter(Boolean).length) {
+        if (Object.keys(semantics).map(function (k) {
+          return node.parent.parent.parent.id.name.match(semantics[k]);
+        }).filter(Boolean).length) {
 
-        name = semantics.returnedFrom + 'ᐸ' + space + node.parent.parent.parent.id.name.split('ﾠㅣ')[0] + space + 'ᐳ'
+          name = semantics.returnedFrom + 'ᐸ' + space + node.parent.parent.parent.id.name.split('ﾠㅣ')[0] + space + 'ᐳ'
 
-      } else {
-        name = semantics.returnedFrom + node.parent.parent.parent.id.name;  
+        } else {
+          name = semantics.returnedFrom + node.parent.parent.parent.id.name;  
+        }
+        
       }
-      
+
+      if (pType === 'Property') {
+        name = semantics.onProperty + node.parent.key.name;
+      }
+
+      if (pType === 'AssignmentExpression') {
+        if (node.parent.left.property) {
+          name = semantics.onProperty + node.parent.left.property.name;  
+        } else {
+          name = semantics.ofVar + node.parent.left.name;  
+        }
+        
+      }
+
+      if (pType === 'VariableDeclarator') {
+        name = semantics.ofVar + node.parent.id.name; 
+      }
+
+      name += 'ﾠㅣline' + space + node.loc.start.line;
+
+      node.update(nameFunc(node.source(), name))
+
+    } catch (e) {
+      //if failure should occur, just don't update the node.
     }
-
-    if (pType === 'Property') {
-      name = semantics.onProperty + node.parent.key.name;
-    }
-
-    if (pType === 'AssignmentExpression') {
-      name = semantics.onProperty + node.parent.left.property.name;
-    }
-
-    if (pType === 'VariableDeclarator') {
-      name = semantics.ofVar + node.parent.id.name; 
-    }
-
-    name += 'ﾠㅣline' + space + node.loc.start.line;
-
-    node.update(nameFunc(node.source(), name))
-
   })
 
   if (again) { again = false; rewrite(output+''); }
 
 }
 
-
-module.exports = function (src) {
+function decofun(src) {
   rewrite(src+'');
   return output+'';
 }
+
+module.exports = decofun;

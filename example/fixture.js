@@ -63,6 +63,14 @@ o.eight(function () { })
 o.eight.nine = function () {}
 o.eight.nine(function () { })
 
+var o2;
+
+o2 = function () { }
+
+
+;(function () {}())
+
+!function () { }()
 
 
 
