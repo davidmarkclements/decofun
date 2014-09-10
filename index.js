@@ -24,7 +24,19 @@ function rewrite (src) {
     var name = '';
     var pType = node.parent.type;
     if (pType === 'CallExpression') {
-      name = semantics.argTo + (node.parent.callee.name || node.parent.callee.object.name + 'ː' + node.parent.callee.property.name);
+
+      if (node.parent.callee.name) {
+        name = semantics.argTo + node.parent.callee.name; 
+      } else {
+        if (node.parent.callee.object.type === 'Identifier') {
+          name = semantics.argTo + node.parent.callee.object.name + 'ː' + node.parent.callee.property.name;
+        } 
+
+        if (node.parent.callee.object.type === 'MemberExpression') {
+          name = semantics.argTo + node.parent.callee.object.property.name + 'ː' + node.parent.callee.property.name;
+        }
+      }
+      
     }
 
     if (pType === 'ReturnStatement') {

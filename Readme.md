@@ -9,10 +9,12 @@
    - [functions assigned to variables](#functions-assigned-to-variables)
    - [function parameters](#function-parameters)
    - [method parameters](#method-parameters)
+   - [sub-object method parameters](#sub-object-method-parameters)
    - [returned functions](#returned-functions)
    - [returned functions of returned anonymous functions](#returned-functions-of-returned-anonymous-functions)
    - [methods declared in object literals](#methods-declared-in-object-literals)
    - [methods assigned to instantiated objects](#methods-assigned-to-instantiated-objects)
+<a name=""></a>
 
  
 <a name="functions-assigned-to-variables"></a>
@@ -53,6 +55,19 @@ obj.prop(function () { })
 Transforms into:
 ```js
 obj.prop(function passedﾠintoﾠobjːpropﾠㅣlineﾠ1 () { })
+```
+
+<a name="sub-object-method-parameters"></a>
+# sub-object method parameters
+are named "passed into <parent subobject>ː<property name> | line N".
+
+```js
+obj.subobj.prop(function () { })
+```
+
+Transforms into:
+```js
+obj.subobj.prop(function passedﾠintoﾠsubobjːpropﾠㅣlineﾠ1 () { })
 ```
 
 <a name="returned-functions"></a>

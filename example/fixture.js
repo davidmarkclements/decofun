@@ -60,6 +60,9 @@ o.eight = function (cb) { }
 
 o.eight(function () { })
 
+o.eight.nine = function () {}
+o.eight.nine(function () { })
+
 
 
 

@@ -35,6 +35,17 @@ test('are named "passed into <parent object>ː<property name> | line N"', functi
 
 })
 
+suite('sub-object method parameters')
+
+test('are named "passed into <parent subobject>ː<property name> | line N"', function () {
+  var input = 'obj.subobj.prop(function () { })'
+  var name = 'passed into subobjːprop ㅣline 1'.replace(/ /g, _);
+  var expected = 'obj.subobj.prop(function '+name+' () { })'
+
+  decofun(input).should.equal(expected)
+
+})
+
 
 suite('returned functions')
 
@@ -112,3 +123,8 @@ test('are named "as property <property name> ㅣ line N"', function () {
   decofun(input).should.equal(expected)
 
 })
+
+
+
+
+
