@@ -13,7 +13,7 @@
    - [returned functions of returned anonymous functions](#returned-functions-of-returned-anonymous-functions)
    - [methods declared in object literals](#methods-declared-in-object-literals)
    - [methods assigned to instantiated objects](#methods-assigned-to-instantiated-objects)
-<a name=""></a>
+
  
 <a name="functions-assigned-to-variables"></a>
 # functions assigned to variables
