@@ -1,5 +1,5 @@
-# Decofun - Debug tools
-## Names anonymous functions according to their context
+# Decofun – Debug tool
+## Name anonymous functions
 
 [![Build Status](https://travis-ci.org/davidmarkclements/decofun.svg?branch=master)](https://travis-ci.org/davidmarkclements/decofun)
 
