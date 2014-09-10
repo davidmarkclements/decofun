@@ -1,0 +1,6 @@
+{
+  "argTo": "passed into ",
+  "returnedFrom": "returned from ",
+  "onProperty": "as property ",
+  "ofVar": "as var "
+}

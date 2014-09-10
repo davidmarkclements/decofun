@@ -1,0 +1,20 @@
+{
+  "name": "deco",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "./node_modules/.bin/mocha -u qunit",
+    "coverage": "./node_modules/.bin/istanbul cover ./node_modules/.bin/_mocha --report lcovonly -- -u qunit"
+  },
+  "author": "David Mark Clements",
+  "license": "ISC",
+  "dependencies": {
+    "falafel": "^0.3.1",
+  },
+  "devDependencies": {
+    "chai": "^1.9.1",
+    "istanbul": "^0.3.2",
+    "mocha": "^1.21.4"
+  }
+}
