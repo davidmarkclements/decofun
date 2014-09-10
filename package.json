@@ -10,7 +10,7 @@
   "author": "David Mark Clements",
   "license": "ISC",
   "dependencies": {
-    "falafel": "^0.3.1",
+    "falafel": "^0.3.1"
   },
   "devDependencies": {
     "chai": "^1.9.1",
