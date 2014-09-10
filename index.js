@@ -15,7 +15,14 @@ function nameFunc(fnstr, name) {
 var again;
 var output;
 
+rewrite.count = 0;
+rewrite.max = 20;
 function rewrite (src) {
+  if (rewrite.count > rewrite.max) {
+    again = false;
+    rewrite.count = 0;
+    return;
+  }
   output = falafel(src, {loc: true}, function (node) {
     try {
       if (node.type !== 'FunctionExpression' || node.id) {
@@ -50,7 +57,11 @@ function rewrite (src) {
       }
 
       if (pType === 'ReturnStatement') {
-        if (!node.parent.parent.parent.id) { again = true; return; }
+        if (!node.parent.parent.parent.id) { 
+          again = true; 
+          rewrite.count += 1;
+          return; 
+        }
 
         
 
@@ -97,6 +108,7 @@ function rewrite (src) {
 }
 
 function decofun(src) {
+  rewrite.count = 0;
   rewrite(src+'');
   return output+'';
 }
