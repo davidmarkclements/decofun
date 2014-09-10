@@ -6,6 +6,9 @@
 [![Coverage Status](https://img.shields.io/coveralls/davidmarkclements/decofun.svg?bust)](https://coveralls.io/r/davidmarkclements/decofun?branch=master)
 
 # TOC
+   - [install](#install)
+   - [example](#example)
+   - [tests](#tests)
    - [functions assigned to variables](#functions-assigned-to-variables)
    - [function parameters](#function-parameters)
    - [method parameters](#method-parameters)
@@ -16,7 +19,30 @@
    - [methods assigned to instantiated objects](#methods-assigned-to-instantiated-objects)
 <a name=""></a>
 
- 
+
+<a name="install"></a>
+
+```sh
+npm i decofun
+```
+
+<a name="example"></a>
+# Example
+
+The easiest way to grok this, is to check the example
+
+```sh
+cat node_modules/decofun/example/fixture.js #view the original
+node node_modules/decofun/example # view the transform result
+```
+<a name="tests"></a>
+
+Run tests with
+
+```
+npm test
+```
+
 <a name="functions-assigned-to-variables"></a>
 # functions assigned to variables
 Are named "of var <varname> | line N".
