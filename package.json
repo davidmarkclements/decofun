@@ -1,11 +1,15 @@
 {
-  "name": "deco",
+  "name": "decofun",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
     "test": "./node_modules/.bin/mocha -u qunit",
     "coverage": "./node_modules/.bin/istanbul cover ./node_modules/.bin/_mocha --report lcovonly -- -u qunit"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/davidmarkclements/decofun.git"
   },
   "author": "David Mark Clements",
   "license": "ISC",
