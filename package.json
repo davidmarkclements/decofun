@@ -3,6 +3,9 @@
   "version": "1.0.1",
   "description": "",
   "main": "index.js",
+  "bin": {
+    "decofun": "./cli.js"
+  },
   "scripts": {
     "test": "npm run coverage && npm run coveralls",
     "test-no-cov": "./node_modules/.bin/mocha -u qunit",
@@ -17,7 +20,8 @@
   "author": "David Mark Clements",
   "license": "ISC",
   "dependencies": {
-    "falafel": "^0.3.1"
+    "falafel": "^0.3.1",
+    "minimist": "~1.1.0"
   },
   "devDependencies": {
     "chai": "^1.9.1",
