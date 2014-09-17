@@ -1,11 +1,8 @@
-# Decofun – Debug tool
-## Name anonymous functions
+# Decofun – Name anonymous functions [![Build Status](https://travis-ci.org/davidmarkclements/decofun.svg?branch=master)](https://travis-ci.org/davidmarkclements/decofun) [![Coverage Status](https://img.shields.io/coveralls/davidmarkclements/decofun.svg?bust)](https://coveralls.io/r/davidmarkclements/decofun?branch=master)
 
-[![Build Status](https://travis-ci.org/davidmarkclements/decofun.svg?branch=master)](https://travis-ci.org/davidmarkclements/decofun)
+For those times when (anonymous function) error's leave you in dark.
 
-[![Coverage Status](https://img.shields.io/coveralls/davidmarkclements/decofun.svg?bust)](https://coveralls.io/r/davidmarkclements/decofun?branch=master)
-
-# TOC
+# Contents
    - [install](#install)
    - [usage](#usage)
    - [example](#example)
@@ -24,12 +21,14 @@
 
 
 <a name="install"></a>
+# install
 
 ```sh
 npm i decofun -g
 ```
 
 <a name="usage"></a>
+# usage
 
 decofun has a simple cli interface, which takes as it's first argument a file to transform; it's up to up how you want to handle the output.
 
