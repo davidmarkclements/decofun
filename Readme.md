@@ -1,6 +1,8 @@
-# Decofun – Name anonymous functions [![Build Status](https://travis-ci.org/davidmarkclements/decofun.svg?branch=master)](https://travis-ci.org/davidmarkclements/decofun) [![Coverage Status](https://img.shields.io/coveralls/davidmarkclements/decofun.svg?bust)](https://coveralls.io/r/davidmarkclements/decofun?branch=master)
+[![Build Status](https://travis-ci.org/davidmarkclements/decofun.svg?branch=master)](https://travis-ci.org/davidmarkclements/decofun) [![Coverage Status](https://img.shields.io/coveralls/davidmarkclements/decofun.svg?bust)](https://coveralls.io/r/davidmarkclements/decofun?branch=master)
 
-For those times when (anonymous function) error's leave you in dark.
+# Decofun – Name anonymous functions
+
+For those times when '(anonymous function)' error's leave you in dark.
 
 # Contents
    - [install](#install)
