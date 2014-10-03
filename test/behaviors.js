@@ -1,0 +1,11 @@
+var decofun = require('../')
+var should = require('chai').should();
+
+suite('recursion safety')
+
+test('supports a maximum depth of returned functions', function () {
+  var input = 'function toodeep () {\n  return function () {\n    return function () {\n      return function () {\n        \n        return function () {\n          return function () {\n            return function () {\n            \n              return function () {\n                return function () {\n                  return function () {\n\n                    return function () {\n                     \n                    }                     \n                    \n                  }\n                }\n              } \n\n            }\n          }\n        }        \n      }\n    }\n  }\n}';
+  var expected = 'function toodeep () {\n  return function returnedﾠfromﾠtoodeepﾠㅣlineﾠ2 () {\n    return function returnedﾠfromﾠᐸﾠreturnedﾠfromﾠtoodeepﾠᐳﾠㅣlineﾠ3 () {\n      return function returnedﾠfromﾠᐸﾠreturnedﾠfromﾠᐸﾠreturnedﾠfromﾠtoodeepﾠᐳﾠᐳﾠㅣlineﾠ4 () {\n        \n        return function returnedﾠfromﾠᐸﾠreturnedﾠfromﾠᐸﾠreturnedﾠfromﾠᐸﾠreturnedﾠfromﾠtoodeepﾠᐳﾠᐳﾠᐳﾠㅣlineﾠ6 () {\n          return function returnedﾠfromﾠᐸﾠreturnedﾠfromﾠᐸﾠreturnedﾠfromﾠᐸﾠreturnedﾠfromﾠᐸﾠreturnedﾠfromﾠtoodeepﾠᐳﾠᐳﾠᐳﾠᐳﾠㅣlineﾠ7 () {\n            return function returnedﾠfromﾠᐸﾠreturnedﾠfromﾠᐸﾠreturnedﾠfromﾠᐸﾠreturnedﾠfromﾠᐸﾠreturnedﾠfromﾠᐸﾠreturnedﾠfromﾠtoodeepﾠᐳﾠᐳﾠᐳﾠᐳﾠᐳﾠㅣlineﾠ8 () {\n            \n              return function returnedﾠfromﾠᐸﾠreturnedﾠfromﾠᐸﾠreturnedﾠfromﾠᐸﾠreturnedﾠfromﾠᐸﾠreturnedﾠfromﾠᐸﾠreturnedﾠfromﾠᐸﾠreturnedﾠfromﾠtoodeepﾠᐳﾠᐳﾠᐳﾠᐳﾠᐳﾠᐳﾠㅣlineﾠ10 () {\n                return function returnedﾠfromﾠᐸﾠreturnedﾠfromﾠᐸﾠreturnedﾠfromﾠᐸﾠreturnedﾠfromﾠᐸﾠreturnedﾠfromﾠᐸﾠreturnedﾠfromﾠᐸﾠreturnedﾠfromﾠᐸﾠreturnedﾠfromﾠtoodeepﾠᐳﾠᐳﾠᐳﾠᐳﾠᐳﾠᐳﾠᐳﾠㅣlineﾠ11 () {\n                  return function returnedﾠfromﾠᐸﾠreturnedﾠfromﾠᐸﾠreturnedﾠfromﾠᐸﾠreturnedﾠfromﾠᐸﾠreturnedﾠfromﾠᐸﾠreturnedﾠfromﾠᐸﾠreturnedﾠfromﾠᐸﾠreturnedﾠfromﾠᐸﾠreturnedﾠfromﾠtoodeepﾠᐳﾠᐳﾠᐳﾠᐳﾠᐳﾠᐳﾠᐳﾠᐳﾠㅣlineﾠ12 () {\n\n                    return function () {\n                     \n                    }                     \n                    \n                  }\n                }\n              } \n\n            }\n          }\n        }        \n      }\n    }\n  }\n}';
+
+  decofun(input).should.equal.expected;
+})

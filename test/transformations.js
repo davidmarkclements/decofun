@@ -148,7 +148,3 @@ test('are labelled "IIFEㅣ line N"', function () {
   decofun(input).should.equal(expected)  
 
 })
-
-
-
-

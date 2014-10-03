@@ -3,6 +3,9 @@ var fs = require('fs');
 var semantics = require('./semantics.json')
 var space = '\uffa0';
 
+module.exports = decofun;
+decofun.auto =  require('./lib/auto')(decofun);
+decofun.restore = require('./lib/auto').restore;
 
 Object.keys(semantics).forEach(function (k) {
    semantics[k] = semantics[k].replace(/ /g, space);
@@ -16,8 +19,9 @@ var again;
 var output;
 
 rewrite.count = 0;
-rewrite.max = 20;
+rewrite.max = 44;
 function rewrite (src) {
+  console.log(rewrite.count)
   if (rewrite.count > rewrite.max) {
     again = false;
     rewrite.count = 0;
@@ -108,9 +112,18 @@ function rewrite (src) {
 }
 
 function decofun(src) {
+  if ((src instanceof Buffer) || typeof src === 'string') {
+    return decofun.transform(src);  
+  }
+  return module.exports.auto.apply(this, arguments);
+}
+
+
+decofun.transform = function (src) {
   rewrite.count = 0;
   rewrite(src+'');
   return output+'';
 }
 
-module.exports = decofun;
+
+
