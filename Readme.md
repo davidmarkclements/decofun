@@ -1,5 +1,9 @@
 # Decofun – Debug tool
-## Name anonymous functions
+
+Decofun is a JavaScript function deanonymizer.
+
+It parses your code and names any anonymous
+functions according to their context.
 
 [![Build Status](https://travis-ci.org/davidmarkclements/decofun.svg?branch=master)](https://travis-ci.org/davidmarkclements/decofun)
 
