@@ -21,7 +21,6 @@ var output;
 rewrite.count = 0;
 rewrite.max = 44;
 function rewrite (src) {
-  console.log(rewrite.count)
   if (rewrite.count > rewrite.max) {
     again = false;
     rewrite.count = 0;

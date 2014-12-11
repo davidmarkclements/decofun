@@ -102,9 +102,6 @@ console.log(decofun(fixture))
 ```
 
 
-
-
-
 <a name="tests"></a>
 ## Tests
 
