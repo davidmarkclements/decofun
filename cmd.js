@@ -45,7 +45,6 @@ process.argv.slice(2).forEach(function(arg){
       break;
   }
 });
-
 var proc = spawn(process.argv[0], args, { stdio: 'inherit' });
 proc.on('exit', function onExit(code, signal) {
   if (+code === 209) {

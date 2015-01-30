@@ -38,6 +38,34 @@ anonymous functions.
 deco examples/loadable
 ```
 
+The `deco` executable can also be instructed to 
+use the [cute-stack](https://github.com/davidmarkclements/cute-stack) module to prettify stack
+traces, just add a `--cute` flag
+
+```sh
+deco examples/loadable --cute
+```
+
+To set the `cute-stack`'s display type, 
+pass it as the value of `--cute`
+ 
+```sh
+deco examples/loadable --cute table
+```
+
+To set the stack size pass a number
+
+```sh
+deco examples/loadable --cute 20
+```
+
+To set both the display type and number, 
+pass a JSON array
+
+```sh
+deco examples/loadable --cute '["table", 20]'
+```
+
 
 ## Automatic Instrumentation
 New in version 1.1.x, we can use decofun to automatically
