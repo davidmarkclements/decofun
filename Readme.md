@@ -9,7 +9,7 @@ functions according to their context.
 
 [![Coverage Status](https://img.shields.io/coveralls/davidmarkclements/decofun.svg?bust)](https://coveralls.io/r/davidmarkclements/decofun?branch=master)
 
-Version 1.1.x
+Version 1.2.x
 
  - [install](#install)
  - [features](#features)
@@ -25,6 +25,19 @@ npm i decofun
 
 <a name="features"></a>
 # Features
+
+## Command Line Tool
+```
+sudo npm -g i decofun
+```
+New in version 1.2.x we can simply use the `deco` 
+executable in place of `node` to instrument 
+anonymous functions.
+
+```sh
+deco examples/loadable
+```
+
 
 ## Automatic Instrumentation
 New in version 1.1.x, we can use decofun to automatically
@@ -276,6 +289,8 @@ Transforms into:
 ;(function IIFEﾠㅣlineﾠ2(){}())
 ```
 
+# Kudos
 
+Sponsered by [nearForm](http://nearform.com)
 
 
