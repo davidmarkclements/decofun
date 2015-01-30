@@ -30,7 +30,7 @@ npm i decofun
 ```
 sudo npm -g i decofun
 ```
-New in version 1.2.x we can simply use the `deco` 
+New from version 1.2.x we can simply use the `deco` 
 executable in place of `node` to instrument 
 anonymous functions.
 
@@ -38,9 +38,8 @@ anonymous functions.
 deco examples/loadable
 ```
 
-The `deco` executable can also be instructed to 
-use the [cute-stack](https://github.com/davidmarkclements/cute-stack) module to prettify stack
-traces, just add a `--cute` flag
+Since version 1.3.x the `deco` executable can also be 
+instructed to use the [cute-stack](https://github.com/davidmarkclements/cute-stack) module to prettify stack traces, just add a `--cute` flag
 
 ```sh
 deco examples/loadable --cute
@@ -68,7 +67,7 @@ deco examples/loadable --cute '["table", 20]'
 
 
 ## Automatic Instrumentation
-New in version 1.1.x, we can use decofun to automatically
+New from version 1.1.x, we can use decofun to automatically
 instrument any required modules, simply call the `auto` method, 
 before requring any other modules
 
