@@ -9,12 +9,6 @@
 var spawn = require('child_process').spawn
   , args = [ __dirname + '/_cmd' ];
 
-
-if (parseFloat(process.versions.node) < 1) {
-  console.error('currently requires node > .11 (e.g. .12 or iosj 1)');
-  return;
-}
-
 process.argv.slice(2).forEach(function(arg){
   var flag = arg.split('=')[0];
 
